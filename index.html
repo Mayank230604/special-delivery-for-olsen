@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7e9e3">
+<title>Two Months, Two Postcards ♡</title>
+<style>
+:root{color-scheme:light;--ink:#4d2631;--berry:#882f48;--paper:#fff9ec;--line:#d9adad;--shadow:0 18px 44px #6a2e3825}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:1.06rem/1.65 Georgia,serif;background:radial-gradient(ellipse at 50% 10%,#fff8ed,transparent 65%),repeating-linear-gradient(105deg,#bf7b8310 0 1px,transparent 1px 5px),#f4dedb}
+main{width:min(100% - 2rem, 64rem);margin:auto;padding:clamp(2rem,7vw,5rem) 0 3rem;text-align:center}
+h1,h2,p,figure{margin:0} h1,h2{font-weight:400;line-height:1.06;text-wrap:balance} h1{font-size:clamp(2.6rem,7vw,5.6rem);letter-spacing:-.065em} h1 em{color:var(--berry)} h2{font-size:clamp(2rem,5vw,3.3rem);letter-spacing:-.045em}
+small,.postal{font:700 .78rem/1.3 system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--berry)}
+header p{margin-top:1rem} button{font:700 .94rem system-ui,sans-serif;cursor:pointer;color:#fff8ed;background:var(--berry);border:1px solid transparent;border-radius:2rem;padding:.85rem 1.3rem;min-height:44px} button:hover{background:#6d2239} :focus-visible{outline:3px solid #a14960;outline-offset:5px}
+.game{max-width:42rem;margin:2rem auto 0;background:#fff7e8;border:1px solid #ba7881;border-radius:.55rem;box-shadow:var(--shadow);overflow:hidden}
+.game header{padding:1.2rem 1rem .9rem}.game h2{margin:.35rem 0}.game small{letter-spacing:.13em}
+.route{position:relative;isolation:isolate;min-height:14rem;background:repeating-linear-gradient(0deg,#fff4d52e 0 2px,transparent 2px 12px),#c1ddd2;border-block:2px solid #9fbdb0;overflow:hidden}
+.island{position:absolute;background:#a7bc83;box-shadow:0 8px #749863;border-radius:0;transform:rotate(-9deg);width:42%;height:46%;top:12%;left:-8%;clip-path:polygon(0 0,75% 0,75% 14%,94% 14%,94% 45%,100% 45%,100% 65%,78% 65%,78% 86%,66% 86%,66% 100%,0 100%)}
+.island.east{inset:auto -10% 12% auto;transform:rotate(170deg);background:#b4c58d}
+.stops{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:absolute;inset:auto 0 10%;font:700 clamp(.64rem,2.5vw,.8rem)/1.25 system-ui;color:#4d2631}
+.stops::before{content:"";position:absolute;border-top:3px dashed #688b7d;top:12px;left:12.5%;right:12.5%;z-index:-1}
+.stops li{min-width:0;padding:0 .12rem}.stops li::before{content:"";display:block;width:16px;height:16px;margin:5px auto 7px;background:#fff4d9;border:2px solid #69464c;box-shadow:2px 2px #69464c;border-radius:2px}.stops li[aria-current]::before{background:#b44963}
+.courier{position:absolute;bottom:34%;left:12.5%;transform:translateX(-50%);transition:left .45s ease;display:grid;justify-items:center;width:clamp(3.4rem,15vw,6rem);z-index:1}
+.courier img{width:100%;aspect-ratio:1;object-fit:cover;object-position:center 38%;border:4px solid #fff7e8;box-shadow:4px 4px #764452;background:#eec2bf}
+.courier span{display:block;background:#fff7e8;line-height:1.25;padding:.1rem .28rem;box-shadow:2px 2px #764452}
+.mail-label{position:absolute;top:.7rem;right:.7rem;padding:.4rem .5rem;background:#fff4db;border:2px dotted #9b5362;transform:rotate(5deg);font:700 .7rem/1.2 system-ui;color:#792b45;max-width:8rem}
+.game[data-stop="1"] .courier{left:37.5%}.game[data-stop="2"] .courier{left:62.5%}.game[data-stop="3"] .courier{left:87.5%}
+.game[data-stop="2"] .courier img{border-color:#ef9fab}
+.game-controls{padding:1.1rem 1rem 1.4rem}.game-controls p{min-height:3.3em;margin:0 auto 1rem;max-width:28rem}.game .early-mail{background:transparent;color:var(--berry);border-color:var(--line);margin:.5rem .2rem 0}.game .early-mail:hover{background:#f7e8df}
+.mail-dialog{width:min(calc(100% - 2rem),24rem);padding:1.6rem;border:1px solid #ba7881;border-radius:.65rem;background:var(--paper);color:var(--ink);box-shadow:var(--shadow);text-align:center}
+.mail-dialog::backdrop{background:#49233380}.mail-dialog h2{font-size:2rem}.mail-dialog p{margin:.6rem 0 1rem}.mail-dialog .sob{font-size:2rem;line-height:1.3;margin:0 0 .5rem}
+@media(prefers-reduced-motion:reduce){.courier{transition:none}}
+.cover{display:grid;justify-items:center;gap:1.5rem;margin:2rem auto 0}.envelope{position:relative;isolation:isolate;display:grid;place-content:center;width:min(95%,32rem);aspect-ratio:1.66;background:linear-gradient(145deg,#f4c6c3,#eab0b5);border:1px solid #c48491;border-radius:.4rem;box-shadow:var(--shadow);transform:rotate(-3deg)}
+.envelope::before,.envelope::after{content:"";position:absolute;inset:0;z-index:-1}.envelope::before{background:#f5cbc6;clip-path:polygon(0 100%,50% 31%,100% 100%)}.envelope::after{background:linear-gradient(#f7d9d1,#e9a7b1);clip-path:polygon(0 0,100% 0,50% 60%)}
+.seal{display:grid;place-items:center;width:3.3rem;height:3.3rem;margin:0 auto .25rem;border:3px double #f5afae;border-radius:50%;background:radial-gradient(circle at 30% 25%,#b45467,#7d273e);box-shadow:0 3px 8px #71213970;color:#ffe4d2;font-size:1.65rem}.address{font:italic clamp(1.6rem,5vw,2.6rem) Georgia,serif}
+.stamp{position:absolute;top:8%;right:5%;padding:.25rem .42rem;background:#fff0db;border:2px dotted #b86a79;color:var(--berry);transform:rotate(7deg);font-size:.7rem}.stamp span{display:block;font-size:1.1rem;line-height:1.1}
+#mail{margin:2.4rem auto 0}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.3rem;text-align:left}.card,.letter{background:repeating-linear-gradient(110deg,#97574707 0 1px,transparent 1px 5px),var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:.25rem}.card{display:grid;padding:1rem;gap:1rem}.face{grid-area:1/1;align-self:start}.card button{grid-area:2/1;justify-self:start;align-self:end}.card h2{margin:.5rem 0 .7rem}.photos{display:grid;grid-template-columns:1fr 1fr;gap:.35rem;margin-bottom:1rem}.photos img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-radius:.15rem}.call img{object-position:center 38%}.photo-caption{font-style:italic;color:var(--berry)}.back p{margin:.75rem 0}.keepsake{margin:1rem 0;padding:.7rem 1rem;border-left:2px solid #b86a79;background:#f7e8df;color:var(--berry);font-style:italic}.postmark{display:inline-block;border:2px solid var(--berry);border-radius:50%;padding:.5rem;transform:rotate(-9deg);margin:.65rem 0}
+.note{margin:2.5rem auto 0}.letter{max-width:36rem;padding:clamp(1.3rem,5vw,2.8rem);margin:1.2rem auto;text-align:left}.letter p{margin-top:1rem}.sign{font-style:italic;color:var(--berry)}.snapshots{max-width:50rem;margin:3rem auto 0}.snapshots h2{margin-bottom:1.2rem}.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}.strip img{width:100%;display:block;aspect-ratio:1;object-fit:cover;border:.32rem solid var(--paper);box-shadow:0 4px 12px #6a2e3827}.strip img:nth-child(even){transform:rotate(3deg)}.strip img:nth-child(odd){transform:rotate(-3deg)}
+.first-month .strip{margin-top:1rem;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.35rem,2vw,1rem)}.first-month img{object-position:var(--position,center)}
+footer{margin-top:2.6rem}.enter{animation:arrive .55s both ease-out}@keyframes arrive{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+[hidden]{display:none!important}@media(max-width:42rem){.cards{grid-template-columns:1fr}.strip{grid-template-columns:repeat(3,1fr)}}@media(prefers-reduced-motion:reduce){.enter{animation:none}}
+/* Postal details and motion */
+.game > header{border-top:6px solid transparent;border-image:repeating-linear-gradient(125deg,#9e445a 0 10px,#f9e8d8 10px 20px,#598478 20px 30px,#f9e8d8 30px 40px) 1}
+.route::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 45%,#30594d25)}
+.courier img{animation:courier-pop .36s cubic-bezier(.22,1.45,.48,1) both}
+.stops li[aria-current]::before{outline:3px solid #fff4d9;outline-offset:2px}
+.mail-label{z-index:2;animation:postmark-press .36s ease-out both}
+.game-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.55rem}
+.game-controls p{width:100%;margin-bottom:.35rem}
+.game .early-mail{margin:0}
+.envelope{background:linear-gradient(145deg,#f8d1ca,#ebadb7),#ebadb7}
+.envelope::after{filter:drop-shadow(0 2px 2px #9a53604d)}
+#game-finish{font-style:italic;color:var(--berry)}
+#game-finish:focus:not(:focus-visible){outline:none}
+button.seal{padding:0;transition:scale .18s ease}
+button.seal:hover{scale:1.1}
+.seal-hint{margin-top:-.5rem;font-size:.9rem;color:var(--berry)}
+.seal-puppy{width:5rem;aspect-ratio:1;object-fit:cover;object-position:center 38%;border:4px solid #fff9ec;border-radius:50%;box-shadow:0 3px 10px #6a2e3833}
+@media(prefers-reduced-motion:reduce){button.seal{transition:none}}
+.card{border-top:4px solid #c17d8c}
+.photos img{min-width:0;box-shadow:0 2px 7px #6a2e3819}
+#front-one .photos img:first-child{object-position:54% center}
+#front-two .photos img:first-child{object-position:62% center}
+.strip img{min-width:0}
+.first-month .strip{grid-template-columns:repeat(5,minmax(0,1fr))}
+@keyframes courier-pop{from{opacity:0;transform:translateY(9px) scale(.86)}to{opacity:1;transform:none}}
+@keyframes postmark-press{from{opacity:0;transform:rotate(12deg) scale(1.25)}to{opacity:1;transform:rotate(5deg) scale(1)}}
+@keyframes postcard-turn{from{opacity:.35;transform:perspective(900px) rotateY(-16deg)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:no-preference){
+  #mail:not([hidden]) .card{animation:arrive .45s .07s both ease-out}
+  #mail:not([hidden]) .card + .card{animation-delay:.17s}
+  .card .face:not([hidden]){animation:postcard-turn .28s ease-out}
+}
+@media(max-width:35rem){
+  .first-month .strip{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .game-controls{padding-inline:.75rem}
+  .game-controls p{min-height:4.8em}
+}
+@media(prefers-reduced-motion:reduce){.courier img,.mail-label{animation:none}}
+.closing{max-width:38rem;margin:3rem auto 0;padding:clamp(1.25rem,5vw,2.4rem);border:1px solid var(--line);border-radius:.4rem;box-shadow:var(--shadow);background:radial-gradient(ellipse at top,#f9dfe0,transparent 65%),var(--paper)}
+.closing h2{margin:.75rem 0}.closing p{max-width:25rem;margin:.75rem auto 1.2rem}.closing-portraits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(.6rem,4vw,1.3rem);width:min(88%,24rem);margin:0 auto 1.3rem}.closing-portraits img{display:block;width:100%;aspect-ratio:1;object-fit:cover;object-position:center 42%;margin:0;border:clamp(.25rem,1.1vw,.45rem) solid #fff9ec;box-shadow:0 6px 18px #6a2e3833;transform:rotate(-4deg)}
+.closing-portraits img + img{transform:rotate(4deg);object-position:center 35%}
+.closing-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.65rem}.closing-actions :is(#reset,#back-to-postcards){background:transparent;color:var(--berry);border-color:var(--line)}.closing-actions :is(#reset,#back-to-postcards):hover{background:#f7e8df}
+</style>
+</head>
+<body>
+<main>
+<header>
+<small>India to the Philippines · 27 November 2026</small>
+<h1>Two Months,<br><em>Two Postcards.</em></h1>
+<p>A little anniversary mail for my Olsen ♡</p>
+</header>
+<section class="game" id="game" data-stop="0" aria-labelledby="game-title">
+<header>
+<small>Anniversary post · India to the Philippines</small>
+<h2 id="game-title">Special Delivery for Olsen</h2>
+</header>
+<div class="route">
+<div class="island" aria-hidden="true"></div>
+<div class="island east" aria-hidden="true"></div>
+<div class="mail-label" id="mail-label" hidden>Meri patni ♡<br>For my wife<br>Handle with care</div>
+<div class="courier" id="courier" hidden>
+<img src="photos/you-10.jpg" alt="Mayank in his puppy filter">
+<span aria-hidden="true">✉</span>
+</div>
+<ol class="stops" aria-label="Delivery route">
+<li aria-current="step">India</li>
+<li>Duel</li>
+<li>Post office</li>
+<li>Philippines</li>
+</ol>
+</div>
+<div class="game-controls">
+<p id="dispatch" aria-live="polite">One envelope for Olsen, ready at the counter. Who’s delivering it?</p>
+<button type="button" id="deliver">Call the courier</button>
+<button type="button" class="early-mail" id="early-mail" aria-haspopup="dialog" aria-controls="mail-dialog">Open my mail</button>
+<dialog class="mail-dialog" id="mail-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-message">
+<p class="sob" aria-hidden="true">🥺🐾</p>
+<h2 id="dialog-title">Olsennn, wait for me!</h2>
+<p id="dialog-message">I carried this with my tiny puppy paws. Can you help me get it to your mailbox first? I’m trying my best here. 😭♡</p>
+<form method="dialog"><button autofocus>Okay, puppy ♡</button></form>
+</dialog>
+</div>
+</section>
+<section class="cover enter" id="cover" aria-label="Sealed envelope" hidden>
+<p id="game-finish" tabindex="-1" hidden>Special delivery for my Olsen. You’ve got mail. ♡</p>
+<div class="envelope">
+<div class="stamp" aria-hidden="true"><span>♥</span>27 NOV</div>
+<button type="button" class="seal" id="seal-note" aria-label="Tap the heart seal" aria-haspopup="dialog" aria-controls="seal-dialog">♡</button>
+<p class="address">To my Olsen</p>
+</div>
+<p class="seal-hint">Psst… tap the heart. 🐾</p>
+<button type="button" id="open" aria-controls="mail">Open your mail</button>
+<dialog class="mail-dialog" id="seal-reminder" aria-labelledby="seal-reminder-title" aria-describedby="seal-reminder-message">
+<p class="sob" aria-hidden="true">🥺🐾</p>
+<h2 id="seal-reminder-title">Psst, Olsen… the heart first!</h2>
+<p id="seal-reminder-message">The puppy hid a very important message under the wax seal. Give the little heart a tap before you open your mail. ♡</p>
+<form method="dialog"><button autofocus>Okay, puppy ♡</button></form>
+</dialog>
+<dialog class="mail-dialog" id="seal-dialog" aria-labelledby="seal-title" aria-describedby="seal-message">
+<img class="seal-puppy" src="photos/you-10.jpg" alt="Mayank in his puppy filter">
+<h2 id="seal-title">Ahem. One tiny delivery fee.</h2>
+<p id="seal-message">The puppy courier accepts one (1) forehead kiss. Long-distance kisses count. He checked the rules. 🐾</p>
+<form method="dialog"><button autofocus>MWAH ♡</button></form>
+</dialog>
+</section>
+<section id="mail" class="enter" aria-label="Anniversary postcards" tabindex="-1" hidden>
+<div class="cards">
+<article class="card">
+<div class="face" id="front-one">
+<div class="photos"><img src="photos/olsen-1.jpg" alt="Olsen resting her cheek on her hand"><img src="photos/you-2.jpg" alt="Your silly boy resting his cheek on his hand, too"></div>
+<small>Month one</small>
+<h2>Somehow, I found you.</h2>
+</div>
+<div class="face back" id="back-one" hidden>
+<span class="postal postmark">India<br>27 Oct</span>
+<h2>Hi, favorite rival.</h2>
+<p>Of all the people I could've run into in Omniheroes, somehow I got you. Sometimes you won, sometimes I won, and either way I was already hoping there'd be another duel.</p>
+<p>I'd still pick you for a rematch, by the way. ♡</p>
+</div>
+<button type="button" class="flip" data-front="front-one" aria-controls="back-one" aria-expanded="false">Flip postcard one</button>
+</article>
+<article class="card">
+<div class="face" id="front-two">
+<div class="photos call"><img src="photos/olsen-8.jpg" alt="Olsen in glasses making a peace sign"><img src="photos/you-1.jpg" alt="Mayank resting his face in his hands with a pink flower filter"></div>
+<small>Month two</small>
+<h2>I love our little world.</h2>
+<p class="photo-caption">I love this one. It feels like you’re right here making faces at me. ♡</p>
+</div>
+<div class="face back" id="back-two" hidden>
+<span class="postal postmark">For Olsen<br>27 Nov</span>
+<h2>You wrote to me in Hindi.</h2>
+<blockquote class="keepsake" lang="hi-Latn">main tumse bahut pyar karti hun, mere pati</blockquote>
+<p>Then you said, “And that's for my husband,” and there I was smiling at my phone like an idiot. 🤭</p>
+<p>I sent you my love in Tagalog, and you sent yours back in Hindi. I still smile when I think about that. ♡</p>
+</div>
+<button type="button" class="flip" data-front="front-two" aria-controls="back-two" aria-expanded="false">Flip postcard two</button>
+</article>
+</div>
+<section class="note enter" id="note" hidden>
+<button type="button" id="letter-button" aria-controls="letter" aria-expanded="false">Open the note tucked inside</button>
+<article class="letter enter" id="letter" tabindex="-1" hidden>
+<small>27 November 2026</small>
+<h2>My sweetest Olsen,</h2>
+<p>Sometimes after we hang up, I catch myself still smiling at my phone. Two months in and you still get me like that. I wish I could reach through the screen and squeeze you for a whole minute.</p>
+<p>Baby, when you worried you’d translated it wrong, all I could think was how cute it was that you tried to tell me you loved me in Hindi. It made me want to read your message over and over.</p>
+<p>Thank you for every silly face, every little game, and all the time you make for me. I’m so happy I get to be your silly boy.</p>
+<p><strong>Happy two months, princess. Mahal na mahal kita. ♡</strong></p>
+<p class="sign">Lots of love,<br>your silly boy</p>
+</article>
+</section>
+<section class="snapshots first-month" aria-labelledby="first-month-title">
+<h2 id="first-month-title">Little snapshots from our first month ♡</h2>
+<p>The photos we sent each other when we first started dating.</p>
+<div class="strip">
+<img src="photos/month-one-1.jpg" alt="Olsen in her round glasses and yellow shirt" loading="lazy">
+<img src="photos/month-one-4.jpg" alt="Mayank in an orange shirt" style="--position:70% center" loading="lazy">
+<img src="photos/olsen-7.jpg" alt="Olsen posing in a green shirt" loading="lazy">
+<img src="photos/month-one-5.jpg" alt="Mayank taking a close-up mirror selfie" style="--position:60% center" loading="lazy">
+<img src="photos/month-one-6.jpg" alt="Mayank taking a mirror selfie in an orange shirt" loading="lazy">
+</div>
+</section>
+<section class="snapshots" aria-labelledby="snapshots-title">
+<h2 id="snapshots-title">A few extras for the envelope</h2>
+<div class="strip">
+<img src="photos/you-6.jpg" alt="Mayank wearing earbuds and a light T-shirt" loading="lazy">
+<img src="photos/you-4.jpg" alt="A selfie in blue with a white scarf" loading="lazy">
+<img src="photos/olsen-finale-1.jpg" alt="Olsen in red glasses with her hand under her chin" style="object-position:67% center" loading="lazy">
+</div>
+</section>
+<footer><button type="button" id="open-finale" aria-controls="finale">See your anniversary card ♡</button></footer>
+</section>
+<section class="closing enter" id="finale" aria-labelledby="closing-title" hidden>
+<div class="closing-portraits">
+<img src="photos/olsen-finale-2.jpg" alt="Olsen peeking over her red glasses" loading="lazy">
+<img src="photos/you-4.jpg" alt="Mayank in a blue outfit and white scarf" loading="lazy">
+</div>
+<small>27 November 2026</small>
+<h2 id="closing-title" tabindex="-1">Happy two months, my Olsen ♡</h2>
+<p>From our first duel to all the little pictures we send each other, I’m so happy it’s you on the other side of my screen.</p>
+<div class="closing-actions">
+<button type="button" id="open-hug" aria-haspopup="dialog" aria-controls="hug-dialog">One last delivery ♡</button>
+<button type="button" id="back-to-postcards">Back to postcards</button>
+<button type="button" id="reset">Seal it back up</button>
+</div>
+<dialog class="mail-dialog" id="hug-dialog" aria-labelledby="hug-title" aria-describedby="hug-message">
+<p class="sob" aria-hidden="true">🐾💌</p>
+<h2 id="hug-title">Your puppy has one more delivery!</h2>
+<p id="hug-message">One very long hug for my Olsen, plus a tiny forehead kiss. Mahal na mahal kita, princess. ♡</p>
+<form method="dialog"><button autofocus>Hug received ♡</button></form>
+</dialog>
+</section>
+</main>
+<script>
+const cover = document.querySelector('#cover');
+const mail = document.querySelector('#mail');
+const open = document.querySelector('#open');
+const note = document.querySelector('#note');
+const letter = document.querySelector('#letter');
+const letterButton = document.querySelector('#letter-button');
+const flips = document.querySelectorAll('.flip');
+const seen = new Set();
+const game = document.querySelector('#game');
+const courier = document.querySelector('#courier');
+const mailLabel = document.querySelector('#mail-label');
+const dispatch = document.querySelector('#dispatch');
+const deliver = document.querySelector('#deliver');
+const stops = game.querySelectorAll('.stops li');
+const gameFinish = document.querySelector('#game-finish');
+const delivery = [
+  {stop: 0, message: 'Puppy Mayank reporting for duty. I was told there’d be snacks.', action: 'Set off with the puppy'},
+  {stop: 1, message: 'The puppy surrenders instantly. “I’d like to formally request a rematch.”', action: 'Take him to the post office'},
+  {stop: 2, message: 'The clerk stamps it “Meri patni.” The puppy is now too busy blushing to take questions.', action: 'Head to Olsen’s mailbox'},
+  {stop: 3, message: 'Made it! One very pink envelope for Olsen, straight from her silly boy.', action: 'Deliver the envelope'}
+];
+let deliveryIndex = 0;
+
+function showEnvelope() {
+  game.hidden = true;
+  cover.hidden = false;
+  gameFinish.hidden = false;
+  gameFinish.focus();
+}
+
+deliver.addEventListener('click', () => {
+  if (deliveryIndex === delivery.length) {
+    showEnvelope();
+    return;
+  }
+  const scene = delivery[deliveryIndex];
+  deliveryIndex += 1;
+  courier.hidden = false;
+  stops[Number(game.dataset.stop)].removeAttribute('aria-current');
+  game.dataset.stop = String(scene.stop);
+  stops[scene.stop].setAttribute('aria-current', 'step');
+  mailLabel.hidden = scene.stop < 2;
+  dispatch.textContent = scene.message;
+  deliver.textContent = scene.action;
+});
+
+const mailDialog = document.querySelector('#mail-dialog');
+document.querySelector('#early-mail').addEventListener('click', () => mailDialog.showModal());
+
+const sealDialog = document.querySelector('#seal-dialog');
+const sealReminder = document.querySelector('#seal-reminder');
+let sealOpened = false;
+
+document.querySelector('#seal-note').addEventListener('click', () => {
+  sealDialog.showModal();
+  sealOpened = true;
+});
+
+open.addEventListener('click', () => {
+  if (!sealOpened) {
+    sealReminder.showModal();
+    return;
+  }
+  cover.hidden = true;
+  mail.hidden = false;
+  mail.focus();
+});
+
+function setFlip(button, flipped) {
+  document.getElementById(button.dataset.front).hidden = flipped;
+  document.getElementById(button.getAttribute('aria-controls')).hidden = !flipped;
+  button.setAttribute('aria-expanded', String(flipped));
+  const number = button.dataset.front.endsWith('one') ? 'one' : 'two';
+  button.textContent = flipped ? 'Show photo side' : 'Flip postcard ' + number;
+}
+
+for (const button of flips) {
+  button.addEventListener('click', () => {
+    const flipped = button.getAttribute('aria-expanded') === 'false';
+    setFlip(button, flipped);
+    if (flipped) seen.add(button);
+    note.hidden = seen.size < flips.length;
+  });
+}
+
+letterButton.addEventListener('click', () => {
+  letter.hidden = !letter.hidden;
+  letterButton.setAttribute('aria-expanded', String(!letter.hidden));
+  letterButton.textContent = letter.hidden ? 'Open the note tucked inside' : 'Fold the note';
+  if (!letter.hidden) letter.focus();
+});
+
+const finale = document.querySelector('#finale');
+const openFinale = document.querySelector('#open-finale');
+
+openFinale.addEventListener('click', () => {
+  mail.hidden = true;
+  finale.hidden = false;
+  document.querySelector('#closing-title').focus();
+});
+
+document.querySelector('#back-to-postcards').addEventListener('click', () => {
+  finale.hidden = true;
+  mail.hidden = false;
+  openFinale.focus();
+});
+
+const hugDialog = document.querySelector('#hug-dialog');
+document.querySelector('#open-hug').addEventListener('click', () => hugDialog.showModal());
+
+document.querySelector('#reset').addEventListener('click', () => {
+  sealOpened = false;
+  finale.hidden = true;
+  for (const button of flips) setFlip(button, false);
+  seen.clear();
+  note.hidden = true;
+  letter.hidden = true;
+  letterButton.setAttribute('aria-expanded', 'false');
+  letterButton.textContent = 'Open the note tucked inside';
+  mail.hidden = true;
+  cover.hidden = false;
+  open.focus();
+});
+</script>
+</body>
+</html>
+
